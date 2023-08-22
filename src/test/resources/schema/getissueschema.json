@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "iid": {
+        "type": "number"
+      },
+      "project_id": {
+        "type": "number"
+      },
+      "title": {
+        "type": "string"
+      },
+      "description": {},
+      "state": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      },
+      "closed_at": {},
+      "closed_by": {},
+      "labels": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "milestone": {},
+      "assignees": {
+        "type": "array",
+        "items": {}
+      },
+      "author": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "username": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "avatar_url": {
+            "type": "string"
+          },
+          "web_url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "name",
+          "state",
+          "avatar_url",
+          "web_url"
+        ]
+      },
+      "type": {
+        "type": "string"
+      },
+      "assignee": {},
+      "user_notes_count": {
+        "type": "number"
+      },
+      "merge_requests_count": {
+        "type": "number"
+      },
+      "upvotes": {
+        "type": "number"
+      },
+      "downvotes": {
+        "type": "number"
+      },
+      "due_date": {},
+      "confidential": {
+        "type": "boolean"
+      },
+      "discussion_locked": {},
+      "issue_type": {
+        "type": "string"
+      },
+      "web_url": {
+        "type": "string"
+      },
+      "time_stats": {
+        "type": "object",
+        "properties": {
+          "time_estimate": {
+            "type": "number"
+          },
+          "total_time_spent": {
+            "type": "number"
+          },
+          "human_time_estimate": {},
+          "human_total_time_spent": {}
+        },
+        "required": [
+          "time_estimate",
+          "total_time_spent",
+          "human_time_estimate",
+          "human_total_time_spent"
+        ]
+      },
+      "task_completion_status": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number"
+          },
+          "completed_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "count",
+          "completed_count"
+        ]
+      },
+      "blocking_issues_count": {
+        "type": "number"
+      },
+      "has_tasks": {
+        "type": "boolean"
+      },
+      "task_status": {
+        "type": "string"
+      },
+      "_links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "award_emoji": {
+            "type": "string"
+          },
+          "project": {
+            "type": "string"
+          },
+          "closed_as_duplicate_of": {}
+        },
+        "required": [
+          "self",
+          "notes",
+          "award_emoji",
+          "project",
+          "closed_as_duplicate_of"
+        ]
+      },
+      "references": {
+        "type": "object",
+        "properties": {
+          "short": {
+            "type": "string"
+          },
+          "relative": {
+            "type": "string"
+          },
+          "full": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "short",
+          "relative",
+          "full"
+        ]
+      },
+      "severity": {
+        "type": "string"
+      },
+      "moved_to_id": {},
+      "service_desk_reply_to": {}
+    },
+    "required": [
+      "id",
+      "iid",
+      "project_id",
+      "title",
+      "description",
+      "state",
+      "created_at",
+      "updated_at",
+      "closed_at",
+      "closed_by",
+      "labels",
+      "milestone",
+      "assignees",
+      "author",
+      "type",
+      "assignee",
+      "user_notes_count",
+      "merge_requests_count",
+      "upvotes",
+      "downvotes",
+      "due_date",
+      "confidential",
+      "discussion_locked",
+      "issue_type",
+      "web_url",
+      "time_stats",
+      "task_completion_status",
+      "blocking_issues_count",
+      "has_tasks",
+      "task_status",
+      "_links",
+      "references",
+      "severity",
+      "moved_to_id",
+      "service_desk_reply_to"
+    ]
+  }
+}
