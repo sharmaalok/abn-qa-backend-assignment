@@ -59,11 +59,11 @@
 		</dependency>
 
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>${extentreports-version}</version>
-		</dependency>
+		</dependency> -->
 
 
 		<dependency>

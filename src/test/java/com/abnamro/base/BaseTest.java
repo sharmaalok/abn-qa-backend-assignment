@@ -6,7 +6,7 @@ public class BaseTest extends ConfigurationManager{
 
 	public static final String ISSUES_ENDPOINT = "/issues";
 	public final String PROJECTS_ENDPOINT = "/projects";
-	public final String GROUPS_ENDPOINT = "/groups/"+groupId+"/issues";
+	public final String GROUPS_ENDPOINT = "/groups";
 	//Service URLs:
 	public static String baseURI;
 	public static String token;

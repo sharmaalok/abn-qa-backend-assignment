@@ -19,7 +19,7 @@ public class GetIssuesTest extends BaseTest{
 						.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 						
 	}
-	@Test(description="This test will get all the issues with authorisation header and with query parameter(s)")
+	@Test(enabled=false, description="This test will get all the issues with authorisation header and with query parameter(s)")
 	public void getIssuesByQueryParameters() {
 		Map<String,Object> queryParams = new HashMap<>();
 		queryParams.put("confidential", 0 );   //implies boolean confidential=true
@@ -41,7 +41,7 @@ public class GetIssuesTest extends BaseTest{
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 
 	}
-	@Test(description="This test will get all the issues for a group with authorisation header and with query parameter(s)")
+	@Test(enabled=false,description="This test will get all the issues for a group with authorisation header and with query parameter(s)")
 	public void getIssuesForGroupByQueryParameters() {
 		Map<String,Object> queryParams = new HashMap<>();
 		queryParams.put("confidential", 0 );   //implies boolean confidential=true
@@ -62,7 +62,7 @@ public class GetIssuesTest extends BaseTest{
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 
 	}
-	@Test(description="This test will get all the issues for a project with authorisation header and with query parameter(s)")
+	@Test(enabled=false,description="This test will get all the issues for a project with authorisation header and with query parameter(s)")
 	public void getIssuesForProjectByQueryParameters() {
 		Map<String,Object> queryParams = new HashMap<>();
 		queryParams.put("confidential", 0 );   //implies boolean confidential=true

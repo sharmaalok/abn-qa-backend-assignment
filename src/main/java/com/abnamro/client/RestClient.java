@@ -148,10 +148,10 @@ public class RestClient {
 			if (log) {
 				return RestAssured.given(createRequestSpec(includeAuth)).log().all()
 						.when()
-						.get(groupUrl);
-//				.get(groupUrl+"/"+groupId+"/issues");
+						//.get(groupUrl);
+						.get(groupUrl+"/"+groupId+"/issues");
 			}
-			return RestAssured.given(createRequestSpec(includeAuth)).when().get(groupUrl);
+			return RestAssured.given(createRequestSpec(includeAuth)).when().get(groupUrl+"/"+groupId+"/issues");
 	}
 
 	public Response getgroupissues(String groupUrl, Map<String, Object> queryParams,  Map<String, String> headersMap, boolean includeAuth, boolean log) {
@@ -159,9 +159,9 @@ public class RestClient {
 		if(log) {
 			return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).log().all()
 					.when()
-					.get(groupUrl);
+					.get(groupUrl+"/"+groupId+"/issues");
 		}
-		return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).when().get(groupUrl);
+		return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).when().get(groupUrl+"/"+groupId+"/issues");
 	}
 
 	// For group issues --> END
