@@ -41,7 +41,6 @@ public class ConfigurationManager {
 					break;
 
 				default:
-					System.out.println("Please pass the right env name..." + envName);
 					throw new APIFrameworkException("WRONG ENV IS Given");
 				}
 			}

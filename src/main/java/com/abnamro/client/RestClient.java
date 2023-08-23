@@ -2,7 +2,6 @@ package com.abnamro.client;
 
 
 import java.util.Map;
-// import java.util.Properties;
 import com.abnamro.frameworkexception.APIFrameworkException;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -13,24 +12,10 @@ import io.restassured.specification.RequestSpecification;
 public class RestClient {
 
 	private final RequestSpecBuilder specBuilder;
-
-	// private final Properties prop;
 	private final String baseURI;
 	private final String token;
 	private final String projectId;
-	// private final String groupId;
-
 	private boolean isAuthorizationHeaderAdded = false;
-
-
-	// public RestClient(Properties prop, String baseURI, String token, String projectId,String groupId) {
-	// 	specBuilder = new RequestSpecBuilder();
-	// 	this.prop = prop;
-	// 	this.baseURI = baseURI;
-	// 	this.token = token;
-	// 	this.projectId = projectId;
-	// 	this.groupId=groupId;
-	// }
 
 	public RestClient(String baseURI, String token, String projectId) {
 		specBuilder = new RequestSpecBuilder();
@@ -63,7 +48,6 @@ public class RestClient {
 				break;
 
 			default:
-				System.out.println("plz pass the right content type....");
 				throw new APIFrameworkException("INVALIDCONTENTTYPE");
 		}
 	}
@@ -73,15 +57,6 @@ public class RestClient {
 		specBuilder.setBaseUri(baseURI);
 		if(includeAuth) {addAuthorizationHeader();}
 
-		return specBuilder.build();
-	}
-
-	private RequestSpecification createRequestSpec(Map<String, String> headersMap, boolean includeAuth) {
-		specBuilder.setBaseUri(baseURI);
-		if(includeAuth) {addAuthorizationHeader();}
-		if(headersMap!=null) {
-			specBuilder.addHeaders(headersMap);
-		}
 		return specBuilder.build();
 	}
 
@@ -108,20 +83,6 @@ public class RestClient {
 		}
 		return specBuilder.build();
 	}
-
-	private RequestSpecification createRequestSpec(Object requestBody, String contentType, Map<String, String> headersMap, boolean includeAuth) {
-		specBuilder.setBaseUri(baseURI);
-		if(includeAuth) {addAuthorizationHeader();}
-		setRequestContentType(contentType);
-		if(headersMap!=null) {
-			specBuilder.addHeaders(headersMap);
-		}
-		if(requestBody!=null) {
-			specBuilder.setBody(requestBody);
-		}
-		return specBuilder.build();
-	}
-
 
 	//Http Methods Utils
 

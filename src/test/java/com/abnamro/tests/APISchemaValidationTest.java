@@ -11,7 +11,7 @@ public class APISchemaValidationTest extends BaseTest{
 	@Test(description ="API schema test for create issues api")
 	public void createIssueAPISchemaTest() {
 
-		Issue issue = new Issue(StringUtils.getRandomTitle(),StringUtils.getRandomDescription(), "incident");
+		Issue issue = new Issue(StringUtils.getRandomTitle(),StringUtils.getRandomDescription(),"incident","",false,null,"","","bug","","",1,"",null,null,null);
 
 		 restClient.post(PROJECTS_ENDPOINT, "json", issue, true, true)
 					.then().log().all()
