@@ -56,7 +56,6 @@ public class RestClient {
 	private RequestSpecification createRequestSpec(boolean includeAuth) {
 		specBuilder.setBaseUri(baseURI);
 		if(includeAuth) {addAuthorizationHeader();}
-
 		return specBuilder.build();
 	}
 

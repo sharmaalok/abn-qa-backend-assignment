@@ -5,7 +5,6 @@ import com.abnamro.constants.APIHttpStatus;
 import com.abnamro.utils.JsonPathValidator;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-import java.util.List;
 
 public class DeleteIssuesTest extends BaseTest{
 

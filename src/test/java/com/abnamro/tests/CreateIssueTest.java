@@ -1,13 +1,11 @@
 package com.abnamro.tests;
 
 import com.abnamro.base.BaseTest;
-import com.abnamro.constants.APIConstants;
 import com.abnamro.constants.APIHttpStatus;
 import com.abnamro.pojo.Issue;
-import com.abnamro.utils.ExcelUtil;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 public class CreateIssueTest extends BaseTest {
 
    @DataProvider
