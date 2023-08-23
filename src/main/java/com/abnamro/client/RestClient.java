@@ -2,7 +2,7 @@ package com.abnamro.client;
 
 
 import java.util.Map;
-import java.util.Properties;
+// import java.util.Properties;
 import com.abnamro.frameworkexception.APIFrameworkException;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -14,22 +14,29 @@ public class RestClient {
 
 	private final RequestSpecBuilder specBuilder;
 
-	private final Properties prop;
+	// private final Properties prop;
 	private final String baseURI;
 	private final String token;
 	private final String projectId;
-	private final String groupId;
+	// private final String groupId;
 
 	private boolean isAuthorizationHeaderAdded = false;
 
 
-	public RestClient(Properties prop, String baseURI, String token, String projectId,String groupId) {
+	// public RestClient(Properties prop, String baseURI, String token, String projectId,String groupId) {
+	// 	specBuilder = new RequestSpecBuilder();
+	// 	this.prop = prop;
+	// 	this.baseURI = baseURI;
+	// 	this.token = token;
+	// 	this.projectId = projectId;
+	// 	this.groupId=groupId;
+	// }
+
+	public RestClient(String baseURI, String token, String projectId) {
 		specBuilder = new RequestSpecBuilder();
-		this.prop = prop;
 		this.baseURI = baseURI;
 		this.token = token;
 		this.projectId = projectId;
-		this.groupId=groupId;
 	}
 
 
@@ -139,65 +146,7 @@ public class RestClient {
 		}
 		return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).when().get(issuesUrl);
 	}
-
 	// For issues --> END
-
-	// For group issues --> START
-
-	public Response getgroupissues(String groupUrl, boolean includeAuth, boolean log) {
-			if (log) {
-				return RestAssured.given(createRequestSpec(includeAuth)).log().all()
-						.when()
-						//.get(groupUrl);
-						.get(groupUrl+"/"+groupId+"/issues");
-			}
-			return RestAssured.given(createRequestSpec(includeAuth)).when().get(groupUrl+"/"+groupId+"/issues");
-	}
-
-	public Response getgroupissues(String groupUrl, Map<String, Object> queryParams,  Map<String, String> headersMap, boolean includeAuth, boolean log) {
-
-		if(log) {
-			return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).log().all()
-					.when()
-					.get(groupUrl+"/"+groupId+"/issues");
-		}
-		return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).when().get(groupUrl+"/"+groupId+"/issues");
-	}
-
-	// For group issues --> END
-
-	// For project issues --> START
-
-	public Response getprojectissues(String projectUrl, boolean includeAuth, boolean log) {
-		if (log) {
-			return RestAssured.given(createRequestSpec(includeAuth)).log().all()
-					.when()
-					.get(projectUrl+"/"+projectId+"/issues");
-		}
-		return RestAssured.given(createRequestSpec(includeAuth)).when().get(projectUrl+"/"+projectId+"/issues");
-	}
-
-	public Response getprojectissues(String projectUrl, Map<String, Object> queryParams,  Map<String, String> headersMap, boolean includeAuth, boolean log) {
-
-		if(log) {
-			return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).log().all()
-					.when()
-					.get(projectUrl+"/"+projectId+"/issues");
-		}
-		return RestAssured.given(createRequestSpec(headersMap, queryParams, includeAuth)).when().get(projectUrl+"/"+projectId+"/issues");
-	}
-
-	// For project issues --> END
-	public Response getsingleprojectissue(String projectUrl, Integer issueIid, boolean includeAuth, boolean log) {
-		if (log) {
-			return RestAssured.given(createRequestSpec(includeAuth)).log().all()
-					.when()
-					.get(projectUrl+"/"+projectId+"/issues/"+issueIid);
-		}
-		return RestAssured.given(createRequestSpec(includeAuth)).when().get(projectUrl+"/"+projectId+"/issues/"+issueIid);
-	}
-
-	// For single project issues --> END
 
 	public Response post(String projectUrl, String contentType, Object requestBody, boolean includeAuth, boolean log) {
 		if(log) {

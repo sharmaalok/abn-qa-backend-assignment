@@ -10,19 +10,19 @@ import org.testng.annotations.Test;
 import static org.hamcrest.Matchers.*;
 public class CreateIssueTest extends BaseTest {
 
-//    @DataProvider
-//	public Object[][] getIssuesTestData() {
-//		return new Object[][] {
-//			{"Test 123", "Description Test123", "issue"},
-//			{"Test 234", "Description Test234", "incident"},
-//          {"Test 345", "Description Test345", "test_case"}
-//		};
-//	}
-    @DataProvider
-    public Object[][] getIssueTestSheetData() {
-        return ExcelUtil.getTestData(APIConstants.CREATE_ISSUE_SHEET_NAME);
-    }
-    @Test(dataProvider = "getIssueTestSheetData",description ="Create Issues as per the data in excel")
+   @DataProvider
+	public Object[][] getIssuesTestData() {
+		return new Object[][] {
+			// {"Test 123", "Description Test123", "issue"},
+			// {"Test 234", "Description Test234", "incident"},
+         {"Test 3456", "test", ""}
+		};
+	}
+    // @DataProvider
+    // public Object[][] getIssueTestSheetData() {
+    //     return ExcelUtil.getTestData(APIConstants.CREATE_ISSUE_SHEET_NAME);
+    // }
+    @Test(dataProvider = "getIssuesTestData",description ="Create Issues as per the data in excel")
     public void createIssueTest(String title, String description, String issue_type) {
         //Creating Issues from the excel
         // Start of creation -->

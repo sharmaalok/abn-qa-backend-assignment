@@ -8,7 +8,9 @@ import org.testng.annotations.Test;
 import com.abnamro.base.BaseTest;
 import com.abnamro.constants.APIHttpStatus;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
+import com.abnamro.utils.JsonPathValidator;
+import io.restassured.response.Response;
 
 
 public class GetIssuesTest extends BaseTest{
@@ -19,7 +21,7 @@ public class GetIssuesTest extends BaseTest{
 						.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 						
 	}
-	@Test(enabled=false, description="This test will get all the issues with authorisation header and with query parameter(s)")
+	@Test(description="This test will get all the issues with authorisation header and with query parameter(s)")
 	public void getIssuesByQueryParameters() {
 		Map<String,Object> queryParams = new HashMap<>();
 		queryParams.put("confidential", 0 );   //implies boolean confidential=true
@@ -36,18 +38,18 @@ public class GetIssuesTest extends BaseTest{
 
 	@Test(description="This test will get all the issues for a group with authorisation header")
 	public void getAllIssuesForGroup() {
-		restClient.getgroupissues(GROUPS_ENDPOINT, true,  true)
+		restClient.get(GROUPS_ENDPOINT+"/"+groupId+"/issues", true,  true)
 				.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 
 	}
-	@Test(enabled=false,description="This test will get all the issues for a group with authorisation header and with query parameter(s)")
+	@Test(description="This test will get all the issues for a group with authorisation header and with query parameter(s)")
 	public void getIssuesForGroupByQueryParameters() {
 		Map<String,Object> queryParams = new HashMap<>();
 		queryParams.put("confidential", 0 );   //implies boolean confidential=true
 		queryParams.put("labels", "bug");
 
-		restClient.getgroupissues(GROUPS_ENDPOINT, queryParams, null,true, true)
+		restClient.get(GROUPS_ENDPOINT+"/"+groupId+"/issues", queryParams, null,true, true)
 				.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode())
 				.assertThat().body("size()", is(1));
@@ -57,18 +59,18 @@ public class GetIssuesTest extends BaseTest{
 
 	@Test(description="This test will get all the issues for a project with authorisation header")
 	public void getAllIssuesForProject() {
-		restClient.getprojectissues(PROJECTS_ENDPOINT, true,  true)
+		restClient.get(PROJECTS_ENDPOINT+"/"+projectId+"/issues", true,  true)
 				.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 
 	}
-	@Test(enabled=false,description="This test will get all the issues for a project with authorisation header and with query parameter(s)")
+	@Test(description="This test will get all the issues for a project with authorisation header and with query parameter(s)")
 	public void getIssuesForProjectByQueryParameters() {
 		Map<String,Object> queryParams = new HashMap<>();
 		queryParams.put("confidential", 0 );   //implies boolean confidential=true
 		queryParams.put("labels", "bug");
 
-		restClient.getprojectissues(PROJECTS_ENDPOINT, queryParams, null,true, true)
+		restClient.get(PROJECTS_ENDPOINT+"/"+projectId+"/issues", queryParams, null,true, true)
 				.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode())
 				.assertThat().body("size()", is(1));
@@ -76,7 +78,7 @@ public class GetIssuesTest extends BaseTest{
 //						.assertThat().body("iid[1]", equalTo(26));
 	}
 
-	@Test(enabled = false,description="This test will get single issues with authorisation header" +
+	@Test(description="This test will get single issues with authorisation header" +
 			"Expectation is Forbidden message as the account is not an administrator account")
 	public void getSingleIsue() {
 
@@ -87,10 +89,17 @@ public class GetIssuesTest extends BaseTest{
 				.assertThat().statusCode(APIHttpStatus.FORBIDDEN_403.getCode());
 	}
 
-	@Test(enabled = false,description="This test will single project issues with authorisation header")
+	@Test(description="This test will single project issues with authorisation header")
 	public void getSingleProjectIsue() {
-		Integer issueIid = 35;//Enter a valid issue_iid here
-		restClient.getsingleprojectissue(PROJECTS_ENDPOINT, issueIid,true,  true)
+		Response allissues = restClient.get(ISSUES_ENDPOINT, true,  true);
+		allissues.then().log().all()
+				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
+
+		JsonPathValidator js = new JsonPathValidator();
+		Integer iid = js.read(allissues, "$.[0].iid"); //js.readList(allissues, "$..iid"); //get all existing iid's
+
+		// Integer issueIid = 35;//Enter a valid issue_iid here
+		restClient.get(PROJECTS_ENDPOINT+"/"+projectId+"/issues/"+iid,true,  true)
 				.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 	}

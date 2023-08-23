@@ -2,6 +2,7 @@ package com.abnamro.base;
 import org.testng.annotations.BeforeTest;
 import com.abnamro.client.RestClient;
 import com.abnamro.configuration.ConfigurationManager;
+
 public class BaseTest extends ConfigurationManager{
 
 	public static final String ISSUES_ENDPOINT = "/issues";
@@ -21,6 +22,7 @@ public class BaseTest extends ConfigurationManager{
 		token = prop.getProperty("token");
 		projectId = prop.getProperty("projectId");
 		groupId = prop.getProperty("groupId");
-		restClient = new RestClient(prop,baseURI,token,projectId,groupId);
+		// restClient = new RestClient(prop,baseURI,token,projectId,groupId);
+		restClient = new RestClient(baseURI,token,projectId);
 	}
 }
