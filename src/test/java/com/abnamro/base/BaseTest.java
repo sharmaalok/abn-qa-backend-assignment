@@ -5,14 +5,13 @@ import com.abnamro.configuration.ConfigurationManager;
 
 public class BaseTest extends ConfigurationManager{
 
-	public static final String ISSUES_ENDPOINT = "/issues";
-	public final String PROJECTS_ENDPOINT = "/projects";
-	public final String GROUPS_ENDPOINT = "/groups";
-	//Service URLs:
-	public static String baseURI;
-	public static String token;
-	public static String projectId;
-	public static String groupId;
+	protected static final String ISSUES_ENDPOINT = "/issues";
+	protected final String PROJECTS_ENDPOINT = "/projects";
+	protected final String GROUPS_ENDPOINT = "/groups";
+	protected static String baseURI;
+	protected static String token;
+	protected static String projectId;
+	protected static String groupId;
 	protected RestClient restClient;
 	@BeforeTest
 	public void setUp() {

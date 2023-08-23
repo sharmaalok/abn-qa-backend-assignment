@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class CornerTests extends BaseTest{
 
-	@Test(description ="Corner Tests for edit issues api")
+	@Test(description ="Corner Tests for edit issues api. Validating the mandatory field message.")
 	public void editIssueCornerTest() {
 
 		Response allissues = restClient.get(ISSUES_ENDPOINT, true,  true);
@@ -29,7 +29,7 @@ public class CornerTests extends BaseTest{
 				.assertThat().body("error", equalTo("assignee_id, assignee_ids, confidential, created_at, description, discussion_locked, due_date, labels, add_labels, remove_labels, milestone_id, state_event, title, issue_type, weight, epic_id, epic_iid are missing, at least one parameter must be provided"));
 	}
 
-	@Test(description ="Corner Tests for create issues api")
+	@Test(description ="Corner Tests for create issues api. validating that the title is mandatory")
 	public void createIssueCornerTest() {
 
 		Map<String, Object> queryParams = new HashMap<>();

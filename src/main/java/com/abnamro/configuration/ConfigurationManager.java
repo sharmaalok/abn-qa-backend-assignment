@@ -13,7 +13,6 @@ public class ConfigurationManager {
 	public Properties initProp() {
 		prop = new Properties();
 
-		// maven: cmd line argument:
 		// mvn clean install -Denv="qa"
 		// mvn clean install
 
@@ -21,7 +20,7 @@ public class ConfigurationManager {
 
 		try {
 			if (envName == null) {
-				System.out.println("no env is given...hence running tests on QA env... ");
+				 //Default properties. if environment is not given then test will take the values from qa.config.properties");
 				ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
 			} else {
 				System.out.println("Running tests on env: " + envName);

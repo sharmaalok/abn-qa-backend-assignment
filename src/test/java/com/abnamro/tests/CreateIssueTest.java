@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import static org.hamcrest.Matchers.equalTo;
 public class CreateIssueTest extends BaseTest {
 
+
+        //body creation for create issue api.
    @DataProvider
 	public Object[][] getIssuesTestData() {
 		return new Object[][] {
@@ -18,23 +20,18 @@ public class CreateIssueTest extends BaseTest {
 		};
 	}
 
-    // @DataProvider
-    // public Object[][] getIssueTestSheetData() {
-    //     return ExcelUtil.getTestData(APIConstants.CREATE_ISSUE_SHEET_NAME);
-    // }
-
-    @Test(dataProvider = "getIssuesTestData",description ="Create Issues as per the data in excel")
+    @Test(dataProvider = "getIssuesTestData",description ="Create Issues as per the data create")
     public void createIssueTest(String title, String description, String issue_type,String assignee_id, Boolean confidential, Boolean discussion_locked, String created_at, String due_date,  String labels, String add_labels, String remove_labels,Integer milestone_id,String state_event,Integer weight,Integer epic_id,Integer epic_iid) 
     {
-        //Creating Issues from the excel
-        // Start of creation -->
+        //body. Empty values will be discarded-->
         Issue issue = new Issue(title,description,issue_type,assignee_id,confidential,discussion_locked,created_at, due_date,labels,add_labels,remove_labels,milestone_id,state_event, weight,epic_id,epic_iid);
-        //Empty values will be discarded
+        
+        //START of post request.
         Integer iid = restClient.post(PROJECTS_ENDPOINT, "json", issue, true, true)
                 .then().log().all()
                 .assertThat().statusCode(APIHttpStatus.CREATED_201.getCode())
                 .extract().path("iid");
-        // End of creation -->
+        //End of post request
 
         //validating the created issues
         //start of validation -->

@@ -11,10 +11,11 @@ public class DeleteAllIssuesTest extends BaseTest{
 	
 	@Test(description ="Delete All Issues")
 	public void deleteAllIssues() {
+
+		//we fetch all idd's of all issue. All these issue would be deleted. 
 		Response allissues = restClient.get(ISSUES_ENDPOINT, true,  true);
 		allissues.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
-
 		JsonPathValidator js = new JsonPathValidator();
 		List<Integer> iids = js.readList(allissues, "$..iid"); //get all existing iid's
 		for (Integer id: iids){

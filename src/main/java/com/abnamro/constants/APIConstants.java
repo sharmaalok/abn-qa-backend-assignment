@@ -5,5 +5,4 @@ public class APIConstants {
 
 	public static final String EDIT_ISSUE_SHEET_NAME = "edit_issue";
 
-
 }
