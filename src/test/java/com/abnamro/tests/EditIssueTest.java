@@ -1,7 +1,6 @@
 package com.abnamro.tests;
 import java.util.HashMap;
 import java.util.Map;
-import com.abnamro.constants.APIConstants;
 import com.abnamro.base.BaseTest;
 import com.abnamro.constants.APIHttpStatus;
 import com.abnamro.utils.JsonPathValidator;
@@ -9,7 +8,6 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 import com.abnamro.pojo.Issue;
-import com.abnamro.utils.ExcelUtil;
 import static org.hamcrest.Matchers.equalTo;;
 
 public class EditIssueTest extends BaseTest{
@@ -37,11 +35,15 @@ public class EditIssueTest extends BaseTest{
     }
 
 
+
 	@DataProvider
-    public Object[][] getIssueTestSheetData() {
-        return ExcelUtil.getTestData(APIConstants.CREATE_ISSUE_SHEET_NAME);
-    }
-	@Test(dataProvider = "getIssuesTestData",description="This test will edit the issue with given body from an excel")
+	public Object[][] getIssuesTestData() {
+		return new Object[][] {
+                {"Changed title for another issue", "Description changed", "issue","",false,false,"","","bug","","",1,"",null,null,null}
+		};
+	}
+
+	@Test(dataProvider = "getIssuesTestData",description="This test will edit the issue with given body")
 	public void editIssueWithBody(String title, String description, String issue_type,String assignee_id, Boolean confidential, Boolean discussion_locked, String created_at, String due_date,  String labels, String add_labels, String remove_labels,Integer milestone_id,String state_event,Integer weight,Integer epic_id,Integer epic_iid) 
     {
         
@@ -58,7 +60,8 @@ public class EditIssueTest extends BaseTest{
 		restClient.put(PROJECTS_ENDPOINT,iid,"json", issueDataToEdit,true, true)
 				.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode())
-				.assertThat().body("title", equalTo("changed title"))
+				.assertThat().body("title", equalTo("Changed title for another issue"))
+				.assertThat().body("description", equalTo("Description changed"))
 				.assertThat().body("discussion_locked", equalTo(false));
     }
 }

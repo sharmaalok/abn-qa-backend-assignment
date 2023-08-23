@@ -7,20 +7,21 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import java.util.List;
 
-public class DeleteIssuesTest extends BaseTest{
-
-	@Test(description ="Delete an Issue by iid")
-	public void deleteIssueByIid()
-	{
+public class DeleteAllIssuesTest extends BaseTest{
+	
+	@Test(description ="Delete All Issues")
+	public void deleteAllIssues() {
 		Response allissues = restClient.get(ISSUES_ENDPOINT, true,  true);
 		allissues.then().log().all()
 				.assertThat().statusCode(APIHttpStatus.OK_200.getCode());
 
 		JsonPathValidator js = new JsonPathValidator();
-		Integer iid = js.read(allissues, "$.[0].iid"); //js.readList(allissues, "$..iid"); //get all existing iid's
-
-		restClient.delete(PROJECTS_ENDPOINT,iid,true,true)
+		List<Integer> iids = js.readList(allissues, "$..iid"); //get all existing iid's
+		for (Integer id: iids){
+			restClient.delete(PROJECTS_ENDPOINT,id,true,true)
 					.then().log().all()
 						.assertThat().statusCode(APIHttpStatus.NO_CONTENT_204.getCode());
+		}
+
 	}
 }

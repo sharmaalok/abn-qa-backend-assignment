@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="API Regression Suite" thread-count="6"
-	parallel="tests" verbose="4">
+<suite name="API Regression Suite" thread-count="1" verbose="4">
 
-	<test name="All tests under GetIssuesTest class">
+	<test name="All tests execution1">
 		<classes>
-			<class name="com.abnamro.tests.GetIssuesTest" />
+			<class name="com.abnamro.tests.DeleteAllIssuesTest" />
 		</classes>
 	</test>
-	
-	 <test name="All tests under CreateIssueTest class">
+
+	<test name="All tests execution2">
 		<classes>
 			<class name="com.abnamro.tests.CreateIssueTest" />
+		</classes>
+	</test>
+	<test name="All tests execution3">
+		<classes>
+			<class name="com.abnamro.tests.DeleteIssuesTest" />
+		</classes>
+	</test>
+	<test name="All tests execution4">
+		<classes>
+			<class name="com.abnamro.tests.EditIssueTest" />
+		</classes>
+	</test>
+	<test name="All tests execution5">
+		<classes>
+			<class name="com.abnamro.tests.APISchemaValidationTest" />
+		</classes>
+	</test>
+	<test name="All tests execution6">
+		<classes>
+			<class name="com.abnamro.tests.APISchemaValidationTest" />
 		</classes>
 	</test>
 </suite>
