@@ -72,9 +72,3 @@ groupId =
 	mvn clean install -Denv="<environment name>" // to run the test from specific config property file. Valid values are qa, dev , stage , prod
 
 5.) TestNG suite XML file will be generated post run
-
-<!-- This repository contains TEST-SUITE for Sample Project. This test framework is designed using Rest Assured java library with TestNG framework. It is written in java language. -->
-
-Note : a) If environment variable is not provided it will fetch BASE_URI, ACCESS_TOKEN and PROJECT_ID from config.properties file. b) Only authenticated user has access to api's. It returns only issues created by the current user.
-
-Tests can be executed directly using testNG suite XML file - src/test/resources/testsuites/gitIssuesAPITest.xml
