@@ -58,46 +58,22 @@ Hamcrest as the matcher library.
 
 In order to run the tests.
 
-Clone the repository.
+1.) Clone the repository.
 
-Import the project in a code editor of your choice.
+2.) Import the project in a code editor of your choice.
 
-Add the below data in the respective config file. 
+3.) Add the below data in the respective config file. 
 token = 
 projectId = 
 groupId = 
 
-Run the test with below command
+4.) Run the test with below command
 	mvn clean test // gets the parameter from qa config property file
 	mvn clean install -Denv="<environment name>" // to run the test from specific config property file. Valid values are qa, dev , stage , prod
 
-TestNG suite XML file will be generated post run
+5.) TestNG suite XML file will be generated post run
 
 <!-- This repository contains TEST-SUITE for Sample Project. This test framework is designed using Rest Assured java library with TestNG framework. It is written in java language. -->
-
-Based on
-This suite is currently based on:
-
-java 11
-io.rest-assured: 5.3.0 https://rest-assured.io/
-com.relevantcodes 2.41.2 https://www.extentreports.com/docs/versions/2/java/doc/
-org.testng 6.13.1 https://testng.org/doc/
-maven-surefire-plugin
-How to setup run test suite
-Clone git repository
-Navigate to the cloned folder
-Open the folder in any code editor
-Open the terminal and hit following commands in terminal
-To set environment variables
-
-export ACCESS_TOKEN=<private git access token>
-export PROJECT_ID=<project id>
-mvn clean test 
-To run all the tests [This will by default run all specs in parallel mode]
-
-At the root level ‘TestReport.html’ file will be generated. Open the html file in any browser.
-
-You can set the BASE_URI, ACCESS_TOKEN and PROJECT_ID in src/test/resources/configfiles/config.properties file. by default BASE_URI = https://gitlab.com/api/v4
 
 Note : a) If environment variable is not provided it will fetch BASE_URI, ACCESS_TOKEN and PROJECT_ID from config.properties file. b) Only authenticated user has access to api's. It returns only issues created by the current user.
 
