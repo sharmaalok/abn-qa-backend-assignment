@@ -62,13 +62,18 @@ In order to run the tests.
 
 2.) Import the project in a code editor of your choice.
 
-3.) Add the below data in the respective config file. 
+3.) Add the below data in the respective config file.
+
 token = 
+
 projectId = 
+
 groupId = 
 
 4.) Run the test with below command
+
 	mvn clean test // gets the parameter from qa config property file
+ 
 	mvn clean install -Denv="<environment name>" // to run the test from specific config property file. Valid values are qa, dev , stage , prod
 
 5.) TestNG suite XML file will be generated post run
